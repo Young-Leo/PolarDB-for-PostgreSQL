@@ -86,7 +86,7 @@ mv -f /tmp/dss.ddl ../tpch-dbgen/
 psql -f $tpch_dir/dss.ddl
 
 ###################### PHASE 2: load data ######################
-# add
+# modify
 psql -c "ALTER SYSTEM SET polar_bulk_extend_size = '4MB';"
 psql -c "ALTER SYSTEM SET polar_index_create_bulk_extend_size = 512;"
 psql -c "SELECT pg_reload_conf();"
@@ -100,7 +100,7 @@ psql -h ~/tmp_master_dir_polardb_pg_1100_bld -c "\COPY customer FROM '$data_dir/
 psql -h ~/tmp_master_dir_polardb_pg_1100_bld -c "\COPY orders FROM '$data_dir/orders.tbl' WITH (FORMAT csv, DELIMITER '|');" &
 psql -h ~/tmp_master_dir_polardb_pg_1100_bld -c "\COPY lineitem FROM '$data_dir/lineitem.tbl' WITH (FORMAT csv, DELIMITER '|');" &
 wait
-# end_add
+# end_modify
 
 # psql -c "\COPY nation FROM '$data_dir/nation.tbl' WITH (FORMAT csv, DELIMITER '|');"
 # psql -c "\COPY region FROM '$data_dir/region.tbl' WITH (FORMAT csv, DELIMITER '|');"
