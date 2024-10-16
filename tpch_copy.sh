@@ -86,7 +86,7 @@ mv -f /tmp/dss.ddl ../tpch-dbgen/
 psql -f $tpch_dir/dss.ddl
 
 ###################### PHASE 2: load data ######################
-# Young-Leo: modify
+# leyang: modify
 psql -c "ALTER SYSTEM SET polar_bulk_extend_size = '4MB';"
 psql -c "ALTER SYSTEM SET polar_index_create_bulk_extend_size = 512;"
 psql -c "SELECT pg_reload_conf();"
